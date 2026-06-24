@@ -22,9 +22,7 @@
     --gray-100: #f1f5f9;
     --white: #ffffff;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: linear-gradient(180deg, #0b0f1a 0%, #0f172a 100%);
@@ -32,368 +30,395 @@
     min-height: 100vh;
     line-height: 1.6;
   }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
+  nav {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray-800);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-
-  /* Hero */
-  .hero {
-    padding: 80px 0 50px;
-    text-align: center;
-  }
-
   .logo {
-    font-size: 2.4rem;
+    font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--white);
+    text-decoration: none;
+    cursor: pointer;
   }
-
-  .logo span {
-    color: var(--blue-500);
-  }
-
-  .tagline {
-    margin-top: 16px;
-    font-size: 1.1rem;
-    color: var(--gray-400);
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* CTA */
-  .cta-row {
-    margin-top: 32px;
+  .logo span { color: var(--blue-500); }
+  .nav-links {
     display: flex;
-    gap: 14px;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    list-style: none;
   }
-
+  .nav-links a {
+    color: var(--gray-400);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 200ms;
+  }
+  .nav-links a:hover { color: var(--white); }
   .btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 22px;
+    padding: 10px 18px;
     border-radius: 999px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     text-decoration: none;
     border: 1px solid transparent;
+    cursor: pointer;
     transition: transform 80ms ease, box-shadow 200ms ease;
-  }
-
-  .btn:hover {
-    transform: translateY(-1px);
-  }
-
-  .btn-primary {
     background: var(--blue-500);
     color: var(--white);
     border-color: var(--blue-500);
-    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
   }
-
-  .btn-primary:hover {
-    background: var(--blue-600);
-    box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
-  }
-
+  .btn:hover { background: var(--blue-600); transform: translateY(-1px); }
   .btn-ghost {
     background: transparent;
     color: var(--gray-200);
     border-color: var(--gray-700);
   }
+  .btn-ghost:hover { border-color: var(--blue-400); color: var(--white); }
 
-  .btn-ghost:hover {
-    border-color: var(--blue-400);
-    color: var(--white);
+  .hero { padding: 70px 0 50px; text-align: center; }
+  .hero h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.02em; }
+  .hero h1 span { color: var(--blue-500); }
+  .hero p {
+    margin-top: 14px;
+    font-size: 1.05rem;
+    color: var(--gray-400);
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
   }
-
-  /* Section */
-  .section {
-    padding: 56px 0;
+  .hero-actions {
+    margin-top: 28px;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
+  .view { display: none; padding: 40px 0 60px; }
+  .view.active { display: block; }
+  .section-title { font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 20px; }
 
-  .section-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 18px;
-  }
-
-  /* How it works */
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 10px;
-  }
-
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .step {
     background: rgba(15, 23, 42, 0.7);
     border: 1px solid var(--gray-700);
     border-radius: 14px;
     padding: 18px;
   }
+  .step-num { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue-400); }
+  .step-title { margin-top: 6px; font-weight: 700; color: var(--white); }
+  .step-text { margin-top: 8px; font-size: 0.9rem; color: var(--gray-400); }
 
-  .step-num {
+  .tokens-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 10px; }
+  .token-card {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid var(--gray-700);
+    border-radius: 14px;
+    padding: 18px;
+    cursor: pointer;
+    transition: border-color 200ms;
+  }
+  .token-card:hover { border-color: var(--blue-500); }
+  .token-name { font-weight: 800; font-size: 1.1rem; color: var(--white); }
+  .token-meta { font-size: 0.8rem; color: var(--gray-400); margin-top: 6px; }
+  .token-status {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 10px;
+    border-radius: 999px;
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--blue-400);
+    letter-spacing: 0.05em;
   }
+  .token-status.live { background: rgba(59, 130, 246, 0.15); color: var(--blue-400); }
+  .token-status.revealed { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
 
-  .step-title {
-    margin-top: 6px;
-    font-weight: 700;
-    color: var(--white);
-  }
+  .empty { text-align: center; padding: 50px 20px; color: var(--gray-400); }
+  .empty-icon { font-size: 3rem; margin-bottom: 12px; }
 
-  .step-text {
-    margin-top: 8px;
-    font-size: 0.9rem;
-    color: var(--gray-400);
-  }
-
-  /* Mechanics grid */
-  .mechs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 10px;
-  }
-
-  .mech {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid var(--gray-700);
+  .create-wrap { max-width: 640px; margin: 0 auto; }
+  .form-group { margin-bottom: 20px; }
+  label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--gray-200); margin-bottom: 8px; }
+  input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
     border-radius: 10px;
-    padding: 12px;
-    font-size: 0.85rem;
-    color: var(--gray-200);
-  }
-
-  .mech strong {
-    color: var(--white);
-  }
-
-  /* FAQ */
-  .faq {
-    margin-top: 12px;
-    display: grid;
-    gap: 12px;
-  }
-
-  details {
-    background: rgba(15, 23, 42, 0.7);
     border: 1px solid var(--gray-700);
-    border-radius: 12px;
-    padding: 14px 16px;
-    cursor: pointer;
-  }
-
-  summary {
-    font-weight: 700;
+    background: rgba(15, 23, 42, 0.7);
     color: var(--white);
-    list-style: none;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--blue-500); }
+  textarea { resize: vertical; min-height: 90px; }
+
+  .modal-bg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-bg.open { display: flex; }
+  .modal {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-700);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 560px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 16px;
   }
-
-  summary::after {
-    content: '+';
-    color: var(--blue-400);
-    font-weight: 800;
-    font-size: 1.1rem;
-  }
-
-  details[open] summary::after {
-    content: '−';
-  }
-
-  details p {
-    margin-top: 10px;
-    color: var(--gray-400);
-    font-size: 0.92rem;
-  }
-
-  /* Footer */
-  .footer {
-    padding: 30px 0 60px;
-    text-align: center;
-    color: var(--gray-700);
-    font-size: 0.85rem;
-  }
-
-  .footer a {
-    color: var(--gray-400);
-    text-decoration: none;
-  }
-
-  .footer a:hover {
-    color: var(--blue-400);
-  }
-
-  /* Contract */
-  .contract {
-    margin-top: 14px;
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid var(--gray-700);
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  .modal-title { font-weight: 800; font-size: 1.1rem; color: var(--white); }
+  .close-modal { background: none; border: none; color: var(--gray-400); font-size: 1.5rem; cursor: pointer; }
+  .reveal-hash {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 0.8rem;
-    color: var(--gray-400);
+    background: var(--gray-800);
+    padding: 10px;
+    border-radius: 8px;
     word-break: break-all;
-  }
-
-  .label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
     color: var(--gray-400);
-    margin-bottom: 6px;
+    border: 1px solid var(--gray-700);
   }
 
   @media (max-width: 640px) {
+    .hero h1 { font-size: 1.9rem; }
     .steps { grid-template-columns: 1fr; }
-    .mechs { grid-template-columns: repeat(2, 1fr); }
-    .logo { font-size: 1.8rem; }
   }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.9.0/ethers.umd.min.js">
+</script>
 </head>
 <body>
-  <section class="hero">
-    <div class="container">
-      <div class="logo">sa1t<span>myst</span></div>
-      <p class="tagline">
-        The mechanic is hidden until graduation.<br>
-        Bonding curve trades normally. Mechanic reveals at sellout.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn-primary" id="launchBtn" href="#" rel="noopener">Launch Mystery Token →</a>
-        <a class="btn btn-ghost" id="demoBtn" href="#" rel="noopener">Watch Demo</a>
+
+<nav>
+  <a class="logo" onclick="navigate('home')">sa1t<span>myst</span></a>
+  <ul class="nav-links">
+    <li><a onclick="navigate('tokens')">Tokens</a></li>
+    <li><a onclick="navigate('create')">Create</a></li>
+    <li><a class="btn btn-ghost" style="margin-left:4px;" onclick="openCreate()">Launch New →</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="view-home" class="view active">
+  <div class="hero container">
+    <h1>The mechanic is hidden<br>until graduation<span>.</span></h1>
+    <p>Launch on sa1t v2 with mechanic locked. Bonding curve trades normally. Reveal happens atomically at sellout.</p>
+    <div class="hero-actions">
+      <a class="btn" onclick="openCreate()">Create Mystery Token →</a>
+      <a class="btn btn-ghost" onclick="navigate('tokens')">Browse Active</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="section-title">How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Commit</div>
+        <div class="step-text">Creator picks a mechanic and commits a keccak256 hash. No one — not even the creator — can peek.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Trade blind</div>
+        <div class="step-text">Bonding curve runs as normal. Buyers trade without knowing which mechanic they're getting. Speculation peaks at sellout.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Reveal</div>
+        <div class="step-text">At graduation, reveal() fires atomically. The pool opens with the mechanic applied.</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">How it works</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <div class="step-title">Commit</div>
-          <div class="step-text">Creator picks a mechanic and commits a keccak256 hash to the sa1tmyst wrapper.</div>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <div class="step-title">Trade blind</div>
-          <div class="step-text">Bonding curve runs as normal. Buyers ape without knowing which mechanic they're getting.</div>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <div class="step-title">Reveal</div>
-          <div class="step-text">At graduation, reveal() fires atomically and the pool opens with the mechanic applied.</div>
-        </div>
+<!-- TOKENS -->
+<section id="view-tokens" class="view">
+  <div class="container">
+    <h2 class="section-title">Active mystery tokens</h2>
+    <div class="tokens-grid" id="tokenList">
+      <div class="empty">
+        <div class="empty-icon">🔍</div>
+        <p>No active mystery tokens yet. Be the first to launch.</p>
+        <button class="btn" style="margin-top:16px;" onclick="openCreate()">Create sa1tmyst Token</button>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Possible mechanics</h2>
-      <div class="mechs">
-        <div class="mech"><strong>01</strong> Buyback & Burn</div>
-        <div class="mech"><strong>02</strong> Dividends</div>
-        <div class="mech"><strong>03</strong> Staking</div>
-        <div class="mech"><strong>04</strong> LP Burn</div>
-        <div class="mech"><strong>05</strong> NFT Gating</div>
-        <div class="mech"><strong>06</strong> Governance</div>
-        <div class="mech"><strong>07</strong> Fee Redist.</div>
-        <div class="mech"><strong>08</strong> Rebase</div>
-        <div class="mech"><strong>09</strong> Bonding</div>
-        <div class="mech"><strong>10</strong> Vesting</div>
-        <div class="mech"><strong>11</strong> Multiplier</div>
-        <div class="mech"><strong>???</strong> Unknown combo</div>
-      </div>
+<!-- CREATE -->
+<section id="view-create" class="view">
+  <div class="create-wrap container">
+    <h2 class="section-title">Create mystery token</h2>
+
+    <div class="form-group">
+      <label>Token name (e.g. "Mysterious Dog")</label>
+      <input type="text" id="tokenName" placeholder="Token name">
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">FAQ</h2>
-      <div class="faq">
-        <details>
-          <summary>Is this a different token standard?</summary>
-          <p>It's a wrapper around sa1t v2. The mechanic is committed hashed on Ethereum mainnet, then revealed at graduation via the same hook flow sa1t already uses.</p>
-        </details>
-        <details>
-          <summary>Can the mechanic be faked?</summary>
-          <p>No. Commitment is keccak256(mechanic + salt) stored on-chain. Reveal must match the hash exactly. No admin key can change it after commit.</p>
-        </details>
-        <details>
-          <summary>Does this change the curve math?</summary>
-          <p>No. Curve trades, graduation, and AMM seeding are identical to sa1t v2. The wrapper only gates mechanic reveal.</p>
-        </details>
-        <details>
-          <summary>When does it ship?</summary>
-          <p>Hackathon release Q3 2025. Follow <a href="#" style="color: var(--blue-400);">@retarddegeneth</a> for deploy updates.</p>
-        </details>
-      </div>
+    <div class="form-group">
+      <label>Token symbol (e.g. "DOG")</label>
+      <input type="text" id="tokenSymbol" placeholder="SYM" maxlength="8">
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">sa1tmyst contract</h2>
-      <div class="label">Ethereum mainnet</div>
-      <div class="contract" id="contractBox">Deploying…</div>
+    <div class="form-group">
+      <label>Mechanic (kept secret)</label>
+      <select id="mechanicSelect">
+        <option value="">— select mechanic —</option>
+        <option value="0">01 · Buyback & Burn</option>
+        <option value="1">02 · Dividends</option>
+        <option value="2">03 · Staking</option>
+        <option value="3">04 · LP Burn</option>
+        <option value="4">05 · NFT Gating</option>
+        <option value="5">06 · Governance</option>
+        <option value="6">07 · Fee Redistribution</option>
+        <option value="7">08 · Rebase</option>
+        <option value="8">09 · Bonding</option>
+        <option value="9">10 · Vesting</option>
+        <option value="10">11 · Multiplier</option>
+        <option value="combo">Random combo (1–4 mechanics)</option>
+      </select>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container">
-      sa1tmyst — built on sa1t v2 &bull; <a href="#" id="twitterLink">@retarddegeneth</a>
+    <div class="form-group">
+      <label>Salt (random string — keep private until reveal)</label>
+      <input type="text" id="saltInput" placeholder="anything random">
     </div>
-  </footer>
 
-  <script>
-    // Replace after deploy
-    window.SA1TMYST = {
-      CONTRACT: '0x',
-      CHAIN: 'ethereum',
-      FACTORY_V2: '0x',
-      LAUNCH_URL: 'https://sa1t.fun',
-      TWITTER: 'https://x.com/retarddegeneth'
-    };
+    <button class="btn" style="width:100%;justify-content:center;" onclick="previewCommit()">Preview commitment hash</button>
 
-    const el = (id) => document.getElementById(id);
+    <div class="form-group" style="margin-top:18px;" id="hashGroup" hidden>
+      <label>Mechanic hash (commit to this)</label>
+      <div class="reveal-hash" id="commitHash"></div>
+    </div>
 
-    el('contractBox').textContent = window.SA1TMYST.CONTRACT;
+    <button class="btn" style="width:100%;justify-content:center;margin-top:14px;" onclick="launchMystery()">Launch Mystery Token →</button>
+  </div>
+</section>
 
-    const launch = el('launchBtn');
-    if (window.SA1TMYST.LAUNCH_URL) {
-      launch.href = window.SA1TMYST.LAUNCH_URL;
-      launch.target = '_blank';
-      launch.rel = 'noopener';
-    }
+<!-- Token detail (hidden) -->
+<section id="view-detail" class="view">
+  <div class="container">
+    <button class="btn btn-ghost" onclick="navigate('tokens')" style="margin-bottom:18px;">← Back</button>
+    <h2 class="section-title" id="detailName">Token</h2>
+    <div class="reveal-hash" id="detailHash">Hash: —</div>
+    <div style="margin-top:12px;" id="detailBody"></div>
+  </div>
+</section>
 
-    const twitter = el('twitterLink');
-    if (window.SA1TMYST.TWITTER) twitter.href = window.SA1TMYST.TWITTER;
+<!-- Launch modal -->
+<div class="modal-bg" id="launchModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Launch mystery token</div>
+      <button class="close-modal" onclick="closeLaunch()">×</button>
+    </div>
+    <div id="launchModalBody">
+      <p style="color:var(--gray-400);">Preparing launch transaction via sa1tmyst wrapper…</p>
+    </div>
+  </div>
+</div>
 
-    const demo = el('demoBtn');
-    if (window.SA1TMYST.CHAIN === 'base') {
-      demo.href = 'https://basescan.org';
-    } else {
-      demo.href = 'https://etherscan.io';
-    }
-  </script>
+<script>
+// === CONFIG ===
+window.SA1TMYST = {
+  CHAIN: 'ethereum',
+  RPC: 'https://eth.drpc.org',
+  WRAPPER: '0x',               // sa1tmyst wrapper contract (deploy to fill)
+  SA1T_V2_FACTORY: '0x',       // sa1t v2 factory
+  EXPLORER: 'https://etherscan.io'
+};
+
+let currentView = 'home';
+
+function navigate(view) {
+  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+  document.getElementById('view-' + view).classList.add('active');
+  currentView = view;
+  if (view === 'tokens') loadTokens();
+  return false;
+}
+
+function openCreate() {
+  document.getElementById('view-create').classList.add('active');
+  document.querySelectorAll('.view').forEach((el, i) => {
+    if (el.id !== 'view-create') el.classList.remove('active');
+  });
+  currentView = 'create';
+}
+
+function closeLaunch() {
+  document.getElementById('launchModal').classList.remove('open');
+}
+
+function previewCommit() {
+  const mechanic = document.getElementById('mechanicSelect').value;
+  const salt = document.getElementById('saltInput').value || Math.random().toString(36).slice(2);
+  if (!mechanic) { alert('Select a mechanic first'); return; }
+  const combo = mechanic === 'combo' ? ['0','1','2'].sort(()=>Math.random()-0.5).slice(0, Math.floor(Math.random()*3)+1).join(',') : mechanic;
+  const hash = ethers.solidityPackedKeccak256(['string', 'string'], [combo, salt]);
+  document.getElementById('commitHash').textContent = hash;
+  document.getElementById('hashGroup').hidden = false;
+  document.getElementById('hashGroup').dataset.combo = combo;
+}
+
+async function launchMystery() {
+  const name = document.getElementById('tokenName').value.trim();
+  const symbol = document.getElementById('tokenSymbol').value.trim().toUpperCase();
+  const combo = document.getElementById('hashGroup').dataset.combo;
+  const hash = document.getElementById('commitHash').textContent;
+  if (!name || !symbol || !combo) { alert('Fill name, symbol, and preview hash first'); return; }
+
+  document.getElementById('launchModal').classList.add('open');
+  const body = document.getElementById('launchModalBody');
+  body.innerHTML = '<p style="color:var(--gray-400);">Connect wallet and confirm in sa1tmyst wrapper…</p>';
+
+  try {
+    const provider = new ethers.JsonRpcProvider(window.SA1TMYST.RPC);
+    const signer = (window.ethereum) ? new ethers.BrowserProvider(window.ethereum).getSigner() : null;
+    if (!signer) throw new Error('No wallet found. Please connect.');
+  } catch (e) {
+    body.innerHTML = '<p style="color:#fca5a5;">' + e.message + '</p>';
+  }
+}
+
+async function loadTokens() {
+  const list = document.getElementById('tokenList');
+  if (!window.SA1TMYST.WRAPPER || window.SA1TMYST.WRAPPER === '0x') {
+    list.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><p>No active mystery tokens yet.</p><button class="btn" style="margin-top:16px;" onclick="openCreate()">Be the first</button></div>`;
+    return;
+  }
+  // Real read path (enabled after wrapper deploy):
+  // 1. Call wrapper.liveTokens() or wrapper.tokenMetadata() to enumerate
+  // 2. Render cards with token name, symbol, curve progress, status
+  list.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><p>Scanning Ethereum for sa1tmyst pools…</p></div>`;
+}
+</script>
+
 </body>
 </html>
