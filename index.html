@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sa1tmyst — mechanic mystery launchpad</title>
+<style>
+  :root {
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-200: #bfdbfe;
+    --blue-400: #60a5fa;
+    --blue-500: #3b82f6;
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --blue-900: #1e3a8a;
+    --gray-900: #0f172a;
+    --gray-800: #1e293b;
+    --gray-700: #334155;
+    --gray-400: #94a3b8;
+    --gray-200: #e2e8f0;
+    --gray-100: #f1f5f9;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(180deg, #0b0f1a 0%, #0f172a 100%);
+    color: var(--gray-100);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 80px 0 50px;
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--white);
+  }
+
+  .logo span {
+    color: var(--blue-500);
+  }
+
+  .tagline {
+    margin-top: 16px;
+    font-size: 1.1rem;
+    color: var(--gray-400);
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* CTA */
+  .cta-row {
+    margin-top: 32px;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 80ms ease, box-shadow 200ms ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    background: var(--blue-500);
+    color: var(--white);
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+
+  .btn-primary:hover {
+    background: var(--blue-600);
+    box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--gray-200);
+    border-color: var(--gray-700);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--blue-400);
+    color: var(--white);
+  }
+
+  /* Section */
+  .section {
+    padding: 56px 0;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  /* How it works */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  .step {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid var(--gray-700);
+    border-radius: 14px;
+    padding: 18px;
+  }
+
+  .step-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blue-400);
+  }
+
+  .step-title {
+    margin-top: 6px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .step-text {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: var(--gray-400);
+  }
+
+  /* Mechanics grid */
+  .mechs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .mech {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid var(--gray-700);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 0.85rem;
+    color: var(--gray-200);
+  }
+
+  .mech strong {
+    color: var(--white);
+  }
+
+  /* FAQ */
+  .faq {
+    margin-top: 12px;
+    display: grid;
+    gap: 12px;
+  }
+
+  details {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid var(--gray-700);
+    border-radius: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+  }
+
+  summary {
+    font-weight: 700;
+    color: var(--white);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  summary::after {
+    content: '+';
+    color: var(--blue-400);
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+
+  details[open] summary::after {
+    content: '−';
+  }
+
+  details p {
+    margin-top: 10px;
+    color: var(--gray-400);
+    font-size: 0.92rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 30px 0 60px;
+    text-align: center;
+    color: var(--gray-700);
+    font-size: 0.85rem;
+  }
+
+  .footer a {
+    color: var(--gray-400);
+    text-decoration: none;
+  }
+
+  .footer a:hover {
+    color: var(--blue-400);
+  }
+
+  /* Contract */
+  .contract {
+    margin-top: 14px;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid var(--gray-700);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.8rem;
+    color: var(--gray-400);
+    word-break: break-all;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray-400);
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 640px) {
+    .steps { grid-template-columns: 1fr; }
+    .mechs { grid-template-columns: repeat(2, 1fr); }
+    .logo { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <div class="logo">sa1t<span>myst</span></div>
+      <p class="tagline">
+        The mechanic is hidden until graduation.<br>
+        Bonding curve trades normally. Mechanic reveals at sellout.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" id="launchBtn" href="#" rel="noopener">Launch Mystery Token →</a>
+        <a class="btn btn-ghost" id="demoBtn" href="#" rel="noopener">Watch Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-title">Commit</div>
+          <div class="step-text">Creator picks a mechanic and commits a keccak256 hash to the sa1tmyst wrapper.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-title">Trade blind</div>
+          <div class="step-text">Bonding curve runs as normal. Buyers ape without knowing which mechanic they're getting.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-title">Reveal</div>
+          <div class="step-text">At graduation, reveal() fires atomically and the pool opens with the mechanic applied.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Possible mechanics</h2>
+      <div class="mechs">
+        <div class="mech"><strong>01</strong> Buyback & Burn</div>
+        <div class="mech"><strong>02</strong> Dividends</div>
+        <div class="mech"><strong>03</strong> Staking</div>
+        <div class="mech"><strong>04</strong> LP Burn</div>
+        <div class="mech"><strong>05</strong> NFT Gating</div>
+        <div class="mech"><strong>06</strong> Governance</div>
+        <div class="mech"><strong>07</strong> Fee Redist.</div>
+        <div class="mech"><strong>08</strong> Rebase</div>
+        <div class="mech"><strong>09</strong> Bonding</div>
+        <div class="mech"><strong>10</strong> Vesting</div>
+        <div class="mech"><strong>11</strong> Multiplier</div>
+        <div class="mech"><strong>???</strong> Unknown combo</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>Is this a different token standard?</summary>
+          <p>It's a wrapper around sa1t v2. The mechanic is committed hashed on Ethereum mainnet, then revealed at graduation via the same hook flow sa1t already uses.</p>
+        </details>
+        <details>
+          <summary>Can the mechanic be faked?</summary>
+          <p>No. Commitment is keccak256(mechanic + salt) stored on-chain. Reveal must match the hash exactly. No admin key can change it after commit.</p>
+        </details>
+        <details>
+          <summary>Does this change the curve math?</summary>
+          <p>No. Curve trades, graduation, and AMM seeding are identical to sa1t v2. The wrapper only gates mechanic reveal.</p>
+        </details>
+        <details>
+          <summary>When does it ship?</summary>
+          <p>Hackathon release Q3 2025. Follow <a href="#" style="color: var(--blue-400);">@retarddegeneth</a> for deploy updates.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">sa1tmyst contract</h2>
+      <div class="label">Ethereum mainnet</div>
+      <div class="contract" id="contractBox">Deploying…</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      sa1tmyst — built on sa1t v2 &bull; <a href="#" id="twitterLink">@retarddegeneth</a>
+    </div>
+  </footer>
+
+  <script>
+    // Replace after deploy
+    window.SA1TMYST = {
+      CONTRACT: '0x',
+      CHAIN: 'ethereum',
+      FACTORY_V2: '0x',
+      LAUNCH_URL: 'https://sa1t.fun',
+      TWITTER: 'https://x.com/retarddegeneth'
+    };
+
+    const el = (id) => document.getElementById(id);
+
+    el('contractBox').textContent = window.SA1TMYST.CONTRACT;
+
+    const launch = el('launchBtn');
+    if (window.SA1TMYST.LAUNCH_URL) {
+      launch.href = window.SA1TMYST.LAUNCH_URL;
+      launch.target = '_blank';
+      launch.rel = 'noopener';
+    }
+
+    const twitter = el('twitterLink');
+    if (window.SA1TMYST.TWITTER) twitter.href = window.SA1TMYST.TWITTER;
+
+    const demo = el('demoBtn');
+    if (window.SA1TMYST.CHAIN === 'base') {
+      demo.href = 'https://basescan.org';
+    } else {
+      demo.href = 'https://etherscan.io';
+    }
+  </script>
+</body>
+</html>
